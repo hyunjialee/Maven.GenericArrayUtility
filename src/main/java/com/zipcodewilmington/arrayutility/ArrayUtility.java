@@ -4,8 +4,10 @@ package com.zipcodewilmington.arrayutility;
  * Created by leon on 3/6/18.
  */
 public class ArrayUtility<T> {
+    T[] inputArray;
 
-    public ArrayUtility (T[] placeHolder) {
+    public ArrayUtility (T[] inputArray) {
+        this.inputArray = inputArray;
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
