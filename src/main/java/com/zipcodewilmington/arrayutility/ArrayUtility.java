@@ -19,6 +19,9 @@ public class ArrayUtility<T> {
         int counter = 0;
         List<T> newArray = new ArrayList<>(Arrays.asList(inputArray));
         newArray.addAll(Arrays.asList(arrayToMerge));
+        //Taking in a new array to take in values of arrayToMerge
+
+        // Finding duplicates with an equals and counter for loop
         for (int i = 0; i < newArray.size(); i++) {
             if(newArray.get(i).equals(valueToEvaluate)) {
                 counter++;
@@ -27,15 +30,45 @@ public class ArrayUtility<T> {
         return counter;
     }
     public T getMostCommonFromMerge(T[] arrayToMerge){
-        return null;
+        int counter = 0;
+        T mostCommon = null;
+
+        List<T> newArray = new ArrayList<>(Arrays.asList(inputArray));
+        newArray.addAll(Arrays.asList(arrayToMerge));
+
+        for(T items : newArray) {
+            if (getNumberOfOccurrences(items) > counter) {
+                counter += getNumberOfOccurrences(items);
+                mostCommon = items;
+            }
+        }
+
+        return mostCommon;
     }
     public Integer getNumberOfOccurrences(T valueToRemove){
-        return 0;
+        int counter = 0;
+        // for the array, return the number of values that are in the given array
+//        for (int i = 0; i < this.inputArray.length; i++){
+//            if (this.inputArray[i].equals(valueToRemove)){
+//                counter++;
+//            } ANOTHER WAY WITH FOR LOOP
+        for(T item : inputArray){  //using for each loop
+            if (item.equals(valueToRemove)) {
+                counter++;
+            }
+        }
+        return counter;
     }
     public T[] removeValue(T valueToRemove) {
-        return null;
-    }
-    public String toString() {
-        return null;
+        List<T> newArray = new ArrayList<>();
+        // Creating a new arraylist
+        // for all the values are NOT valueToRemove, then add to new array list
+
+        for(int i = 0; i < this.inputArray.length; i++){
+            if (!this.inputArray[i].equals(valueToRemove)) {
+                newArray.add(this.inputArray[i]);
+            }
+        }
+        return newArray.toArray(Arrays.copyOf(this.inputArray, newArray.size()));
     }
 }
